@@ -72,6 +72,7 @@ func New(params *NewParams) *API {
 		humaConfig.DocsPath = ""
 	}
 	humaAPI := humachi.New(mux, humaConfig)
+	humaAPI.UseMiddleware(MetadataMiddleware)
 
 	registrar := newFluentRegistrar(humaAPI)
 
